@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4UnitsTable.cc,v 1.5 2008-12-03 07:34:50 kmura Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4UnitsTable.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   pyG4UnitsTable.cc
 //

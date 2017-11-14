@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: G4PyCoutDestination.hh,v 1.3 2006-06-29 15:33:06 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: G4PyCoutDestination.hh 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   G4PyCoutDestination.hh
 //
@@ -46,8 +45,8 @@ public:
   G4PyCoutDestination();
   ~G4PyCoutDestination();
 
-  virtual G4int ReceiveG4cout(G4String coutString);
-  virtual G4int ReceiveG4cerr(G4String cerrString);
+  virtual G4int ReceiveG4cout(const G4String& coutString);
+  virtual G4int ReceiveG4cerr(const G4String& cerrString);
 
 };
 

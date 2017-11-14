@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: G4PyCoutDestination.cc,v 1.3 2006-06-29 15:33:03 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: G4PyCoutDestination.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   G4PyCoutDistination.cc
 //
@@ -52,18 +51,18 @@ G4PyCoutDestination::~G4PyCoutDestination()
 }
 
 
-/////////////////////////////////////////////////////////////
-G4int G4PyCoutDestination::ReceiveG4cout(G4String coutString)
-/////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+G4int G4PyCoutDestination::ReceiveG4cout(const G4String& coutString)
+////////////////////////////////////////////////////////////////////
 {
   PySys_WriteStdout("%s", coutString.c_str());
   return 0;
 }
 
 
-/////////////////////////////////////////////////////////////
-G4int G4PyCoutDestination::ReceiveG4cerr(G4String cerrString)
-/////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+G4int G4PyCoutDestination::ReceiveG4cerr(const G4String& cerrString)
+////////////////////////////////////////////////////////////////////
 {
   PySys_WriteStderr("%s", cerrString.c_str());
   return 0;

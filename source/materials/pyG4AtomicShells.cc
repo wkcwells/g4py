@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4AtomicShells.cc,v 1.1 2008-06-03 06:27:20 kmura Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4AtomicShells.cc 101514 2016-11-18 15:30:57Z gcosmo $
 // ====================================================================
 //   pyG4AtomicShells.cc
 //
@@ -41,7 +40,7 @@ using namespace boost::python;
 void export_G4AtomicShells()
 {
   class_<G4AtomicShells, boost::noncopyable>
-    ("G4AtomicShells", "Atomic subshell binding energy table")
+    ("G4AtomicShells", "Atomic subshell binding energy table", no_init)
 
     .def("GetNumberOfShells",    &G4AtomicShells::GetNumberOfShells)
     .staticmethod("GetNumberOfShells")

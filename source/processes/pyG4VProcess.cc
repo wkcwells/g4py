@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4VProcess.cc,v 1.4 2006-06-29 15:35:03 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4VProcess.cc 76884 2013-11-18 12:54:03Z gcosmo $
 // ====================================================================
 //   pyG4VProcess.cc
 //
@@ -40,9 +39,9 @@ using namespace boost::python;
 // ====================================================================
 namespace pyG4VProcess {
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_GetPhysicsTableFileName, 
-				       GetPhysicsTableFileName, 3, 4);
-};
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_GetPhysicsTableFileName,
+				       GetPhysicsTableFileName, 3, 4)
+}
 
 using namespace pyG4VProcess;
 
@@ -63,11 +62,11 @@ void export_G4VProcess()
     .def("StorePhysicsTable",    &G4VProcess::StorePhysicsTable)
     .def("RetrievePhysicsTable", &G4VProcess::RetrievePhysicsTable)
     .def("GetPhysicsTableFileName", &G4VProcess::GetPhysicsTableFileName,
-	 f_GetPhysicsTableFileName()
-	 [return_value_policy<return_by_value>()])
+         f_GetPhysicsTableFileName()
+         [return_value_policy<return_by_value>()])
     .def("GetProcessName",       &G4VProcess::GetProcessName,
-	 return_value_policy<return_by_value>())  
-    .def("GetProcessType",       &G4VProcess::GetProcessType)    
+         return_value_policy<return_by_value>())
+    .def("GetProcessType",       &G4VProcess::GetProcessType)
     .def("DumpInfo",             &G4VProcess::DumpInfo)
     .def("SetVerboseLevel",      &G4VProcess::SetVerboseLevel)
     .def("GetVerboseLevel",      &G4VProcess::GetVerboseLevel)

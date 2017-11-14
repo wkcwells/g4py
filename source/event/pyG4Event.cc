@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4Event.cc,v 1.4 2006-06-29 15:31:29 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4Event.cc 76884 2013-11-18 12:54:03Z gcosmo $
 // ====================================================================
 //   pyG4Event.cc
 //
@@ -40,9 +39,9 @@ using namespace boost::python;
 // ====================================================================
 namespace pyG4Event {
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_GetPrimaryVertex, 
-				       GetPrimaryVertex, 0, 1);
-};
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_GetPrimaryVertex,
+				                               GetPrimaryVertex, 0, 1)
+}
 
 using namespace pyG4Event;
 
@@ -51,7 +50,7 @@ using namespace pyG4Event;
 // ====================================================================
 void export_G4Event()
 {
-  class_<G4Event, G4Event*>("G4Event", "event class")
+  class_<G4Event, G4Event*, boost::noncopyable>("G4Event", "event class")
     .def(init<G4int>())
     // ---
     .def("Print",              &G4Event::Print)

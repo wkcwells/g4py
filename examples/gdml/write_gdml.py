@@ -24,7 +24,7 @@ g4py.ParticleGun.Construct()
 gRunManager.Initialize()
 
 # visualization
-gApplyUICommand("/vis/open OGLIX")
+gApplyUICommand("/vis/open OGLSX")
 gApplyUICommand("/vis/scene/create")
 gApplyUICommand("/vis/scene/add/volume")
 gApplyUICommand("/vis/sceneHandler/attach")
@@ -36,6 +36,6 @@ navigator= gTransportationManager.GetNavigatorForTracking()
 world_volume= navigator.GetWorldVolume()
 
 gdml_parser = G4GDMLParser()
-gdml_parser.Write("qgeom.gdml", world_volume)
+gdml_parser.Write("qgeom_out.gdml", world_volume)
 
 

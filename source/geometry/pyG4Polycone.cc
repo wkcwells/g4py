@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4Polycone.cc,v 1.1 2007-07-11 05:39:50 kmura Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4Polycone.cc 81291 2014-05-26 09:31:19Z gcosmo $
 // ====================================================================
 //   pyG4Polycone.cc
 //
@@ -61,11 +60,11 @@ G4Polycone* f1_CreatePolycone(const G4String& name, G4double phiStart,
   return new G4Polycone(name, phiStart, phiTotal, numZPlanes,
                         zlist, r0list, r1list);
 }
-  
+
 
 G4Polycone* f2_CreatePolycone(const G4String& name, G4double phiStart,
                               G4double phiTotal, G4int numRZ,
-                              const std::vector<G4double>& r, 
+                              const std::vector<G4double>& r,
                               const std::vector<G4double>& z)
 {
   G4double zlist[numRZ];
@@ -97,7 +96,6 @@ void export_G4Polycone()
     .def("GetStartPhi",    &G4Polycone::GetStartPhi)
     .def("GetEndPhi",      &G4Polycone::GetEndPhi)
     .def("IsOpen",         &G4Polycone::IsOpen)
-    .def("IsGeneric",      &G4Polycone::IsGeneric)
     .def("GetNumRZCorner", &G4Polycone::GetNumRZCorner)
 
     // operators

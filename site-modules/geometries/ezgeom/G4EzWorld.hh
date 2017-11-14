@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: G4EzWorld.hh,v 1.1 2008-12-01 07:07:34 kmura Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: G4EzWorld.hh 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   G4EzWorld.hh
 //
@@ -38,6 +37,7 @@
 #define G4_EZ_WORLD_H
 
 #include "globals.hh"
+#include "G4SystemOfUnits.hh"
 
 // ====================================================================
 //

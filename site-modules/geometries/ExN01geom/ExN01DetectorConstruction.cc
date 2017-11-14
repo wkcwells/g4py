@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: ExN01DetectorConstruction.cc,v 1.4 2006-06-29 15:29:10 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: ExN01DetectorConstruction.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   ExN01DetectorConstruction.cc
 //
@@ -38,7 +37,7 @@
 #include "G4LogicalVolume.hh"
 #include "G4ThreeVector.hh"
 #include "G4PVPlacement.hh"
-#include "globals.hh"
+#include "G4SystemOfUnits.hh"
 
 // ====================================================================
 //

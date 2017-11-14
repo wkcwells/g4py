@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: QDetectorConstruction.cc,v 1.4 2006-06-29 15:29:24 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: QDetectorConstruction.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   QDetectorConstruction.cc
 //
@@ -38,6 +37,7 @@
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
 #include "G4VisAttributes.hh"
+#include "G4SystemOfUnits.hh"
 
 // ====================================================================
 //

@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4ExceptionHandler.cc,v 1.1 2006-11-21 05:58:33 kmura Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4ExceptionHandler.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   pyG4ExceptionHandler.cc
 //
@@ -33,6 +32,7 @@
 #include <boost/python.hpp>
 #include "G4VExceptionHandler.hh"
 #include "G4StateManager.hh"
+#include <stdlib.h>
 
 using namespace boost::python;
 
@@ -52,42 +52,46 @@ public:
                 G4ExceptionSeverity severity,
                 const char* description) {
 
-    G4cerr << "*** G4Exception : " << exceptionCode << G4endl;
-    G4cerr << "      issued by : " << originOfException << G4endl;
-    G4cerr << description << G4endl;
-    G4cerr << G4endl << "Severity : ";
-
+    std::ostringstream message;
+    message << "*** G4Exception : " << exceptionCode << G4endl
+            << "      issued by : " << originOfException << G4endl
+            << description << G4endl;
+    
     switch(severity) {
     case FatalException:
       PyErr_SetString(PyExc_AssertionError,
                       "*** Fatal Exception ***");
       PyErr_Print();
+      G4cerr << message.str() << G4endl;
       break;
 
     case FatalErrorInArgument:
       PyErr_SetString(PyExc_ValueError,
                       "*** Fatal Error In Argument ***");
       PyErr_Print();
+      G4cerr << message.str() << G4endl;
+      break;
 
     case RunMustBeAborted:
       PyErr_SetString(PyExc_RuntimeError,
                       "*** Run Must Be Aborted ***");
       PyErr_Print();
+      G4cerr << message.str() << G4endl;
       break;
 
     case EventMustBeAborted:
       PyErr_SetString(PyExc_RuntimeError,
                       "*** Event Must Be Aborted ***");
       PyErr_Print();
+      G4cerr << message.str() << G4endl;
       break;
 
     default:
       PyErr_Warn(PyExc_RuntimeWarning,
                  "*** This is just a warning message. ***");
+      G4cerr << message.str() << G4endl;
       break;
     }
-
-    G4cerr << G4endl;
 
     // anyway, no abort.
     return false;

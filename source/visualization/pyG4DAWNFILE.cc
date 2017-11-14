@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4DAWNFILE.cc,v 1.5 2006-06-29 15:36:23 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4DAWNFILE.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   pyG4DAWNFILE.cc
 //

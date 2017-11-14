@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pymodG4intercoms.cc,v 1.1 2006-08-08 05:20:57 kmura Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pymodG4intercoms.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   pymodG4intercoms.cc [Geant4Py module]
 //

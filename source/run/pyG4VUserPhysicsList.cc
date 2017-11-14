@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4VUserPhysicsList.cc,v 1.5 2006-06-29 15:35:30 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4VUserPhysicsList.cc 76884 2013-11-18 12:54:03Z gcosmo $
 // ====================================================================
 //   pyG4VUserPhysicsList.cc
 //
@@ -63,12 +62,22 @@ void (G4VUserPhysicsList::*f2_SetCutValue)(G4double, const G4String&,
 					   const G4String&)
   = &G4VUserPhysicsList::SetCutValue;
 
+// SetParticleCuts
+void (G4VUserPhysicsList::*f1_SetParticleCuts)(G4double,
+                                               G4ParticleDefinition*,
+                                               G4Region*)
+  = &G4VUserPhysicsList::SetParticleCuts;
+void (G4VUserPhysicsList::*f2_SetParticleCuts)(G4double,
+                                               G4ParticleDefinition*,
+                                               G4Region*)
+  = &G4VUserPhysicsList::SetParticleCuts;
+
 // StorePhysicsTable
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_StorePhysicsTable,
-				       StorePhysicsTable, 0, 1);
+				                               StorePhysicsTable, 0, 1)
 // SetParticleCuts
 BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_SetParticleCuts,
-				       SetParticleCuts, 2, 3);
+				                               SetParticleCuts, 2, 3)
 
 }
 
@@ -94,11 +103,11 @@ void export_G4VUserPhysicsList()
     // ---
     .def("StorePhysicsTable",     &G4VUserPhysicsList::StorePhysicsTable,
 	 f_StorePhysicsTable())
-    .def("IsPhysicsTableRetrieved", 
-	 &G4VUserPhysicsList::IsPhysicsTableRetrieved)
+    .def("IsPhysicsTableRetrieved",
+         &G4VUserPhysicsList::IsPhysicsTableRetrieved)
     .def("IsStoredInAscii",       &G4VUserPhysicsList::IsStoredInAscii)
-    .def("GetPhysicsTableDirectory", 
-	 &G4VUserPhysicsList::GetPhysicsTableDirectory,
+    .def("GetPhysicsTableDirectory",
+         &G4VUserPhysicsList::GetPhysicsTableDirectory,
          return_value_policy<return_by_value>())
     .def("SetStoredInAscii",      &G4VUserPhysicsList::SetStoredInAscii)
     .def("ResetStoredInAscii",    &G4VUserPhysicsList::ResetStoredInAscii)
@@ -106,12 +115,12 @@ void export_G4VUserPhysicsList()
     .def("DumpList",              &G4VUserPhysicsList::DumpList)
 
     .def("DumpCutValuesTable",    &G4VUserPhysicsList::DumpCutValuesTable)
-    .def("DumpCutValuesTableIfRequested", 
-	 &G4VUserPhysicsList::DumpCutValuesTableIfRequested)
+    .def("DumpCutValuesTableIfRequested",
+         &G4VUserPhysicsList::DumpCutValuesTableIfRequested)
     .def("SetCutValue",           f1_SetCutValue)
     .def("SetCutValue",           f2_SetCutValue)
-    .def("SetParticleCuts",       &G4VUserPhysicsList::SetParticleCuts,
-	 f_SetParticleCuts())
+    .def("SetParticleCuts",       f1_SetParticleCuts, f_SetParticleCuts())
+    .def("SetParticleCuts",       f2_SetParticleCuts, f_SetParticleCuts())
     // ---
     .def("SetVerboseLevel",       &G4VUserPhysicsList::SetVerboseLevel)
     .def("GetVerboseLevel",       &G4VUserPhysicsList::GetVerboseLevel)

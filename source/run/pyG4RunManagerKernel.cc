@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4RunManagerKernel.cc,v 1.3 2006-06-29 15:35:15 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4RunManagerKernel.cc 86749 2014-11-17 15:03:05Z gcosmo $
 // ====================================================================
 //   pyG4RunManagerKernel.cc
 //
@@ -40,7 +39,11 @@ using namespace boost::python;
 // ====================================================================
 namespace pyG4RunManagerKernel {
 
-};
+// RunInitialization()
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_RunInitialization,
+                                       RunInitialization, 0, 1)
+    
+}
 
 using namespace pyG4RunManagerKernel;
 
@@ -58,14 +61,15 @@ void export_G4RunManagerKernel()
     //.def("DefineWorldVolume", &G4RunManagerKernel::DefineWorldVolume)
     //.def("SetPhysics", &G4RunManagerKernel::SetPhysics)
     //.def("InitializePhysics", &G4RunManagerKernel::InitializePhysics)
-    .def("RunInitialization",  &G4RunManagerKernel::RunInitialization)
+    .def("RunInitialization",  &G4RunManagerKernel::RunInitialization,
+         f_RunInitialization())
     //.def("RunTermination", &G4RunManagerKernel::RunTermination)
     //.def("UpdateRegion", &G4RunManagerKernel::UpdateRegion)
     //.def("DumpRegion", &G4RunManagerKernel::DumpRegion)
     //.def("DumpRegion", &G4RunManagerKernel::DumpRegion)
-    //.def("GeometryHasBeenModified", 
+    //.def("GeometryHasBeenModified",
     //&G4RunManagerKernel::GeometryHasBeenModified)
-    //.def("PhysicsHasBeenModified", 
+    //.def("PhysicsHasBeenModified",
     //&G4RunManagerKernel::PhysicsHasBeenModified)
     //.def("GetEventManager", &G4RunManagerKernel::GetEventManager,
     //...)
@@ -78,7 +82,7 @@ void export_G4RunManagerKernel()
     //...)
     //.def("GetVersionString", &G4RunManagerKernel::GetVersionString)
     //.def("SetVerboseLevel", &G4RunManagerKernel::SetVerboseLevel)
-    //.def("SetGeometryToBeOptimized", 
+    //.def("SetGeometryToBeOptimized",
     //&G4RunManagerKernel::SetGeometryToBeOptimized)
     ;
 }

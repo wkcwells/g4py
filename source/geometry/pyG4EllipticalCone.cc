@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4EllipticalCone.cc,v 1.2 2007-07-13 04:57:50 kmura Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4EllipticalCone.cc 81291 2014-05-26 09:31:19Z gcosmo $
 // ====================================================================
 //   pyG4EllipticalCone.cc
 //
@@ -46,7 +45,7 @@ G4EllipticalCone* CreateEllipticalCone(const G4String& name,
                                        G4double  zMax,
                                        G4double  pzTopCut)
 {
-  new G4EllipticalCone(name, pxSemiAxis,pySemiAxis, zMax, pzTopCut);
+  return new G4EllipticalCone(name, pxSemiAxis,pySemiAxis, zMax, pzTopCut);
 }
 
 }

@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4Element.cc,v 1.7 2008-12-04 08:55:25 kmura Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4Element.cc 101514 2016-11-18 15:30:57Z gcosmo $
 // ====================================================================
 //   pyG4Element.cc
 //
@@ -59,7 +58,7 @@ void Print(G4Element& ele)
   std::cout << ele;  // problem with G4cout. (delayed message)
 }
 
-};
+}
 
 using namespace pyG4Element;
 
@@ -75,17 +74,11 @@ void export_G4Element()
     .def(init<const G4String&, const G4String&, G4int>())
     // ---
     .def("AddIsotope",          &G4Element::AddIsotope)
-#if G4VERSION_NUMBER >= 920
     .def("GetName",             &G4Element::GetName,
          return_value_policy<reference_existing_object>())
     .def("GetSymbol",           &G4Element::GetSymbol,
          return_value_policy<reference_existing_object>())
     .def("SetName",             &G4Element::SetName)
-#else
-    .def("GetName",             &G4Element::GetName)
-    .def("GetSymbol",           &G4Element::GetSymbol)
-#endif
-
     .def("GetZ",                &G4Element::GetZ)
     .def("GetN",                &G4Element::GetN)
     .def("GetA",                &G4Element::GetA)
@@ -106,21 +99,11 @@ void export_G4Element()
     .def("GetElement",          &G4Element::GetElement,
          return_value_policy<reference_existing_object>())
     .staticmethod("GetElement")
-    .def("GetCountUse",         &G4Element::GetCountUse)
-    .def("increaseCountUse",    &G4Element::increaseCountUse)
-    .def("decreaseCountUse",    &G4Element::decreaseCountUse)
-#if G4VERSION_NUMBER >= 710
-    .def("GetIndexZ",           &G4Element::GetIndexZ)
-#endif
     .def("GetfCoulomb",         &G4Element::GetfCoulomb)
     .def("GetfRadTsai",         &G4Element::GetfRadTsai)
     .def("GetIonisation",       &G4Element::GetIonisation,
 	 return_internal_reference<>())
     // ---
     .def("Print", Print)
-    .def(self == self)
-    .def(self != self)
     ;
-
 }
-

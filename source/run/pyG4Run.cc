@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4Run.cc,v 1.4 2006-06-29 15:35:09 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4Run.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   pyG4Run.cc
 //
@@ -42,7 +41,7 @@ using namespace boost::python;
 // ====================================================================
 void export_G4Run()
 {
-  class_<G4Run, G4Run*>("G4Run", "run class")
+  class_<G4Run, G4Run*, boost::noncopyable>("G4Run", "run class")
     // ---
     .def("GetRunID",         &G4Run::GetRunID)
     .def("SetRunID",         &G4Run::SetRunID)

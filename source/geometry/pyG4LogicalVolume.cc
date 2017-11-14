@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4LogicalVolume.cc,v 1.5 2008-03-13 07:32:18 kmura Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4LogicalVolume.cc 94509 2015-11-20 10:14:44Z gcosmo $
 // ====================================================================
 //   pyG4LogicalVolume.cc
 //
@@ -50,19 +49,20 @@ using namespace boost::python;
 // ====================================================================
 namespace pyG4LogicalVolume {
 
-void(G4LogicalVolume::*f1_SetVisAttributes)(const G4VisAttributes*) 
+void(G4LogicalVolume::*f1_SetVisAttributes)(const G4VisAttributes*)
   = &G4LogicalVolume::SetVisAttributes;
 
-void(G4LogicalVolume::*f2_SetVisAttributes)(const G4VisAttributes&) 
+void(G4LogicalVolume::*f2_SetVisAttributes)(const G4VisAttributes&)
   = &G4LogicalVolume::SetVisAttributes;
 
-#if G4VERSION_NUMBER <= 701
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_GetMass, GetMass, 0, 2);
-#elif G4VERSION_NUMBER >=710
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_GetMass, GetMass, 0, 3);
-#endif
+G4VSolid*(G4LogicalVolume::*f1_GetSolid)() const = &G4LogicalVolume::GetSolid;
 
-};
+void(G4LogicalVolume::*f1_SetSolid)(G4VSolid*)
+  = &G4LogicalVolume::SetSolid;
+
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_GetMass, GetMass, 0, 3)
+
+}
 
 using namespace pyG4LogicalVolume;
 
@@ -86,12 +86,13 @@ void export_G4LogicalVolume()
          G4FieldManager*, G4VSensitiveDetector*,
          G4UserLimits*, G4bool >())
     // ---
-    .def("GetName",         &G4LogicalVolume::GetName)
+    .def("GetName",         &G4LogicalVolume::GetName,
+         return_value_policy<reference_existing_object>())
     .def("SetName",         &G4LogicalVolume::SetName)
     // ---
     .def("GetNoDaughters",  &G4LogicalVolume::GetNoDaughters)
     .def("GetDaughter",     &G4LogicalVolume::GetDaughter,
-	 return_internal_reference<>())
+	       return_internal_reference<>())
     .def("AddDaughter",     &G4LogicalVolume::AddDaughter)
     .def("IsDaughter",      &G4LogicalVolume::IsDaughter)
     .def("IsAncestor",      &G4LogicalVolume::IsAncestor)
@@ -99,26 +100,27 @@ void export_G4LogicalVolume()
     .def("ClearDaughters",  &G4LogicalVolume::ClearDaughters)
     .def("TotalVolumeEntities", &G4LogicalVolume::TotalVolumeEntities)
     // ----
-    .def("GetSolid",        &G4LogicalVolume::GetSolid,
-	 return_internal_reference<>())
-    .def("SetSolid",        &G4LogicalVolume::SetSolid)
+    .def("GetSolid",        f1_GetSolid,
+         return_internal_reference<>())
+    .def("SetSolid",        f1_SetSolid)
     .def("GetMaterial",     &G4LogicalVolume::GetMaterial,
-	 return_internal_reference<>())
+	       return_internal_reference<>())
     .def("SetMaterial",     &G4LogicalVolume::SetMaterial)
     .def("UpdateMaterial",  &G4LogicalVolume::UpdateMaterial)
     // ---
     .def("GetMass",         &G4LogicalVolume::GetMass, f_GetMass())
     .def("GetFieldManager", &G4LogicalVolume::GetFieldManager,
-	 return_internal_reference<>())
+	       return_internal_reference<>())
     .def("SetFieldManager", &G4LogicalVolume::SetFieldManager)
     .def("GetSensitiveDetector", &G4LogicalVolume::GetSensitiveDetector,
-	 return_internal_reference<>())
+	       return_internal_reference<>())
+    .def("SetSensitiveDetector", &G4LogicalVolume::SetSensitiveDetector)
     .def("GetUserLimits",   &G4LogicalVolume::GetUserLimits,
-	 return_internal_reference<>())
+	       return_internal_reference<>())
     .def("SetUserLimits",   &G4LogicalVolume::SetUserLimits)
     // ---
     .def("GetVoxelHeader",  &G4LogicalVolume::GetVoxelHeader,
-	 return_internal_reference<>())
+	       return_internal_reference<>())
     .def("SetVoxelHeader",  &G4LogicalVolume::SetVoxelHeader)
     .def("GetSmartless",    &G4LogicalVolume::GetSmartless)
     .def("SetSmartless",    &G4LogicalVolume::SetSmartless)
@@ -130,26 +132,20 @@ void export_G4LogicalVolume()
     .def("IsRegion",        &G4LogicalVolume::IsRegion)
     .def("SetRegion",       &G4LogicalVolume::SetRegion)
     .def("GetRegion",       &G4LogicalVolume::GetRegion,
-	 return_internal_reference<>())
+	       return_internal_reference<>())
     .def("PropagateRegion", &G4LogicalVolume::PropagateRegion)
     .def("GetMaterialCutsCouple", &G4LogicalVolume::GetMaterialCutsCouple,
-	 return_internal_reference<>())
+	       return_internal_reference<>())
     .def("SetMaterialCutsCouple", &G4LogicalVolume::SetMaterialCutsCouple)
     // ---
     .def("GetVisAttributes", &G4LogicalVolume::GetVisAttributes,
-	 return_internal_reference<>())
+	       return_internal_reference<>())
     .def("SetVisAttributes", f1_SetVisAttributes)
     .def("SetVisAttributes", f2_SetVisAttributes)
     // ---
-#if G4VERSION_NUMBER >= 700 && G4VERSION_NUMBER <= 711 
-    .def("BecomeEnvelopeForFastSimulation", 
-	 &G4LogicalVolume::BecomeEnvelopeForFastSimulation)
-    .def("ClearEnvelopeForFastSimulation", 
-	 &G4LogicalVolume::ClearEnvelopeForFastSimulation)
-#endif
-    .def("GetFastSimulationManager", 
-	 &G4LogicalVolume::GetFastSimulationManager,
-	 return_internal_reference<>())
+    .def("GetFastSimulationManager",
+	      &G4LogicalVolume::GetFastSimulationManager,
+	      return_internal_reference<>())
     // ---
     .def("SetBiasWeight",  &G4LogicalVolume::SetBiasWeight)
     .def("GetBiasWeight",  &G4LogicalVolume::GetBiasWeight)

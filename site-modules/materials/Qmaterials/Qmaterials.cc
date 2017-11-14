@@ -23,14 +23,15 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: Qmaterials.cc,v 1.4 2006-06-29 15:29:37 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: Qmaterials.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   Qmaterials.cc
 //
 //                                         2005 Q
 // ====================================================================
 #include "G4Material.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4PhysicalConstants.hh"
 
 ////////////////
 void Construct()

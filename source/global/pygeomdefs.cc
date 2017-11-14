@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pygeomdefs.cc,v 1.4 2006-06-29 15:33:45 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pygeomdefs.cc 66892 2013-01-17 10:57:59Z gunter $
 // ====================================================================
 //   pygeomdefs.cc
 //

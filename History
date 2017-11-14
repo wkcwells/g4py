@@ -1,6 +1,3 @@
-$Id: History,v 1.53 2010-12-02 08:34:26 kmura Exp $
--------------------------------------------------------------------
-
      =========================================================
      Geant4 - an Object-Oriented Toolkit for Simulation in HEP
      =========================================================
@@ -13,6 +10,70 @@ Geant4Py is a Geant4-Python bridge.
      ----------------------------------------------------------
      * Reverse chronological order (last date on top), please *
      ----------------------------------------------------------
+
+
+7 Dec. 2016 K. Murakami
+ - remove G4VisAttributes::Invisible as deprecated
+
+21 Nov. 2016 K. Murakami
+ - fix version strings in __init__.py
+
+18 Nov. 2016 K. Murakami
+ - update for 10.3 release
+ - CMake modified for unit/integration tests with CTest
+ - remove ExN03 physics list
+
+19 Nov. 2015 K. Murakami
+ - update CMakeLists.txt, change minimum version requirement to 3.3
+ - add exported methods requested by enhansment-id 1613
+
+13 Nov. 2015 K. Murakami
+ - update CMakeLists.txt for C++11 migration
+ - update for 10.2 release, following changes of class interface.
+
+15 Nov. 2014 K. Murakami
+ - complete migration to cmake for building library. (GNUmakefiles removed)
+ - update for 10.1 release, following changes of class interface.
+ - linker problem of OSX was fixed. (OSX Yosemite tested)
+
+May 25 2014 Koichi Murakami
+ - remove IsGeneric() method in pyG4Polyone.cc because that method is removed.
+   (bug-id 1544)
+ - configure script, physics list is changed to be always turned on.
+   (bug-id 1546)
+ - pyG4EllipticalCone.cc, add missing return in CreateEllipticalCone() method.
+   (bug-id 1586)
+
+15 November 2013 K.Murakami
+ - add support for CMake build
+ - updated for 10.0 release
+ - suppress warnings
+
+8 November 2012 K.Murakami
+ - configure script is updated for CMake build
+ - updated Geant4 interface for the latest
+ - G4SystemOfUnits.hh and G4PhysicalConstants.hh are explictly added.
+ - Documentations are updated in Markdown format.
+ - some minor updated for examples
+
+23 July 2012 K.Murakami
+ - configure script: fixed logics for specifying python include path (bug.1316)
+ - pyG4VisManager: (bug.1318))
+   added static statement for GetVerbosity.
+   fixed GetConcreteInstance returns an insufficient class pointer.
+
+21 July 2012 K.Murakami
+ - configure script is updated for internal G4clhep
+ - pyG4Run.cc, pyG4Event.cc are updated as non-copyable (9.5.p01) (bug.1317)
+ - g4autobuild, g4package scripts are apdated for internal clhep use.
+
+10 Nomvembter 2011 K.Murakami
+ - fixes on OSX Lion matters
+ - some minor fixes for 9.5 release
+
+8 November 2011 K.Murakami
+ - update for 9.5 release
+ - eliminate obsolete G4Exception.
 
 1 December 2010 K.Murakami
  - update for chages of G4 classes (G4GDMLParser, physics list)
@@ -56,14 +117,14 @@ Geant4Py is a Geant4-Python bridge.
 
 25 June 2008 K. Murakami
  - configure : fix a wrong incdir variable.
- - config/sys/linux.gmk, linuxx8664gcc : 
+ - config/sys/linux.gmk, linuxx8664gcc :
                add -fpermissive compile option for gcc 4.3
 
 12 June 2008 K. Murakami (1.6.1)
  - configure : fix echo -n problem, add --with-extra-dir flag
  - tools/g4autobuild : add treatment of XERCESCROOT
  - tools/g4pack : fix echo -n problem
- 
+
 4 June 2008 K. Murakami
  - add G4AtomicShells
  - update configure script (compatible with Debian/Ubuntsu sh)
@@ -101,7 +162,7 @@ Geant4Py is a Geant4-Python bridge.
 
 07 August 2007 K.Murakami (1.4.1)
  - add boolean sold classes
- - add G4PVPlacement constructors for geometry overlap check 
+ - add G4PVPlacement constructors for geometry overlap check
  - add gtest06/07 for geometry test
 
 12 July 2007 K.Murakami (1.4.0)
@@ -153,11 +214,11 @@ Geant4Py is a Geant4-Python bridge.
  - modify config tools for building on MacOSX (some side-effects)
  - add tools dir for support tools for building user environment
  - add intercoms dir (move pyG4UImanager.cc from interfacr to intercoms)
- - new exposed staffs; 
+ - new exposed staffs;
    G4UImanager, G4UIcommandTree, G4UIcommand, G4UIparameter
  - __init__.py is updeted
    (gUImanager as global, and some modifications)
-   
+
 12 July 2006 K.Murakami (1.0.1)
  - add exposures of G4LossTableManager, G4ProductionCutsTable
  - add site-modules/utls/MCScore
@@ -201,4 +262,3 @@ Geant4Py is a Geant4-Python bridge.
 
 27 February 2006 K.Murakami
  - commit the first version (local tag: g4py-27-feb-06)
-

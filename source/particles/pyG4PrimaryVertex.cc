@@ -23,8 +23,7 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4PrimaryVertex.cc,v 1.4 2006-06-29 15:34:43 gunter Exp $
-// $Name: geant4-09-04-patch-02 $
+// $Id: pyG4PrimaryVertex.cc 94509 2015-11-20 10:14:44Z gcosmo $
 // ====================================================================
 //   pyG4PrimaryVertex.cc
 //
@@ -40,9 +39,9 @@ using namespace boost::python;
 // ====================================================================
 namespace pyG4PrimaryVertex {
 
-BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_GetPrimary, GetPrimary, 0, 1);
+BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(f_GetPrimary, GetPrimary, 0, 1)
 
-};
+}
 
 using namespace pyG4PrimaryVertex;
 
@@ -53,6 +52,9 @@ void export_G4PrimaryVertex()
 {
   class_<G4PrimaryVertex, G4PrimaryVertex*>
     ("G4PrimaryVertex", "primary vertex")
+    .def(init<>())
+    .def(init<G4double, G4double, G4double, G4double>())
+    .def(init<G4ThreeVector, G4double>())
     // ---
     .add_property("X0", &G4PrimaryVertex::GetX0)
     .add_property("Y0", &G4PrimaryVertex::GetY0)
@@ -60,16 +62,17 @@ void export_G4PrimaryVertex()
     .add_property("T0", &G4PrimaryVertex::GetT0)
     // ---
     .def("GetPosition", &G4PrimaryVertex::GetPosition,
-         return_value_policy<return_by_value>())	
+         return_value_policy<return_by_value>())
     .def("GetX0",       &G4PrimaryVertex::GetX0)
     .def("GetY0",       &G4PrimaryVertex::GetY0)
     .def("GetZ0",       &G4PrimaryVertex::GetZ0)
     .def("GetT0",       &G4PrimaryVertex::GetT0)
     .def("GetNumberOfParticle", &G4PrimaryVertex::GetNumberOfParticle)
     .def("GetPrimary",  &G4PrimaryVertex::GetPrimary,
-	 return_internal_reference<>(), f_GetPrimary())
+      	 return_internal_reference<>(), f_GetPrimary())
+    .def("SetPrimary",  &G4PrimaryVertex::SetPrimary)
     .def("GetWeight",   &G4PrimaryVertex::GetWeight)
     .def("SetWeight",   &G4PrimaryVertex::SetWeight)
     .def("Print", &G4PrimaryVertex::Print)
-     ;
+    ;
 }

@@ -24,8 +24,7 @@
 // ********************************************************************
 //
 //
-// $Id: ExN03DetectorConstruction.cc,v 1.5 2006-12-01 02:37:01 kmura Exp $
-// GEANT4 tag $Name: geant4-09-04-patch-02 $
+// $Id: ExN03DetectorConstruction.cc 101905 2016-12-07 11:34:39Z gunter $
 //
 // 
 
@@ -49,6 +48,8 @@
 
 #include "G4VisAttributes.hh"
 #include "G4Colour.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4PhysicalConstants.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -343,7 +344,7 @@ G4VPhysicalVolume* ExN03DetectorConstruction::ConstructCalorimeter()
   //                                        
   // Visualization attributes
   //
-  logicWorld->SetVisAttributes (G4VisAttributes::Invisible);
+  logicWorld->SetVisAttributes (G4VisAttributes::GetInvisible());
 
   G4VisAttributes* simpleBoxVisAtt= new G4VisAttributes(G4Colour(1.0,1.0,1.0));
   simpleBoxVisAtt->SetVisibility(true);

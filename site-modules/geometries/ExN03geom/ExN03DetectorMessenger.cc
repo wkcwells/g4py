@@ -24,8 +24,7 @@
 // ********************************************************************
 //
 //
-// $Id: ExN03DetectorMessenger.cc,v 1.1 2006-12-01 02:37:01 kmura Exp $
-// GEANT4 tag $Name: geant4-09-04-patch-02 $
+// $Id: ExN03DetectorMessenger.cc 66892 2013-01-17 10:57:59Z gunter $
 //
 // 
 
