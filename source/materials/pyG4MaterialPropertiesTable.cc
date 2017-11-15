@@ -75,7 +75,7 @@ void export_G4MaterialPropertiesTable()
     .def("GetProperty", &G4MaterialPropertiesTable::GetProperty,
 	 return_value_policy<reference_existing_object>())
     .def("AddEntry", &G4MaterialPropertiesTable::AddEntry)
-    .def("RemoveEntry", &G4MaterialPropertiesTable::RemoveEntry)
+    // ?? .def("RemoveEntry", &G4MaterialPropertiesTable::RemoveEntry)
     .def("DumpTable", &G4MaterialPropertiesTable::DumpTable)
     ;
 }

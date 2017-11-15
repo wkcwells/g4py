@@ -11,6 +11,7 @@ add_library(
   pyG4Isotope.cc
   pyG4Material.cc
   pyG4MaterialTable.cc
+  pyG4MaterialPropertiesTable.cc
   pyG4NistManager.cc
   pymodG4materials.cc
 )
