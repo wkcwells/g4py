@@ -67,6 +67,7 @@ void export_G4VProcess()
     .def("GetProcessName",       &G4VProcess::GetProcessName,
          return_value_policy<return_by_value>())
     .def("GetProcessType",       &G4VProcess::GetProcessType)
+    .def("GetProcessSubType",    &G4VProcess::GetProcessSubType)
     .def("DumpInfo",             &G4VProcess::DumpInfo)
     .def("SetVerboseLevel",      &G4VProcess::SetVerboseLevel)
     .def("GetVerboseLevel",      &G4VProcess::GetVerboseLevel)
