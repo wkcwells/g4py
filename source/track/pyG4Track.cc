@@ -69,6 +69,7 @@ void export_G4Track()
     .def("GetPolarization",        &G4Track::GetPolarization,
 	 return_value_policy<return_by_value>())
     .def("GetTrackStatus",         &G4Track::GetTrackStatus)
+    .def("SetTrackStatus",         &G4Track::SetTrackStatus)
     .def("GetTrackLength",         &G4Track::GetTrackLength)
     .def("GetStep",                &G4Track::GetStep,
     	 return_value_policy<reference_existing_object>())
