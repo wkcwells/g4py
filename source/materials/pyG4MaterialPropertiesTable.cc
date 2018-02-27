@@ -70,10 +70,10 @@ void export_G4MaterialPropertiesTable()
     .def("AddProperty",    f1_AddProperty)
     .def("RemoveConstProperty", &G4MaterialPropertiesTable::RemoveConstProperty)
     .def("RemoveProperty", &G4MaterialPropertiesTable::RemoveProperty)
-    .def("GetConstProperty", &G4MaterialPropertiesTable::GetConstProperty)
+    //.def("GetConstProperty", &G4MaterialPropertiesTable::GetConstProperty)
     .def("ConstPropertyExists", &G4MaterialPropertiesTable::ConstPropertyExists)
-    .def("GetProperty", &G4MaterialPropertiesTable::GetProperty,
-	 return_value_policy<reference_existing_object>())
+    //.def("GetProperty", &G4MaterialPropertiesTable::GetProperty,
+	// return_value_policy<reference_existing_object>())
     .def("AddEntry", &G4MaterialPropertiesTable::AddEntry)
     // ?? .def("RemoveEntry", &G4MaterialPropertiesTable::RemoveEntry)
     .def("DumpTable", &G4MaterialPropertiesTable::DumpTable)

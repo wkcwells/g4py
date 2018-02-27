@@ -39,6 +39,6 @@ using namespace boost::python;
 // ====================================================================
 void export_G4RandomDirection()
 {
-  def("G4RandomDirection",  G4RandomDirection);
+  //def("G4RandomDirection",  G4RandomDirection);
 }
 

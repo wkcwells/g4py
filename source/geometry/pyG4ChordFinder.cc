@@ -54,7 +54,7 @@ void export_G4ChordFinder()
   class_<G4ChordFinder, G4ChordFinder*, boost::noncopyable>
     ("G4ChordFinder", "chord finder class", no_init)
     // constructor
-    .def(init<G4MagInt_Driver*>())
+    //.def(init<G4MagInt_Driver*>())
     .def(init<G4MagneticField*>())
     .def(init<G4MagneticField*, G4double>())
     .def(init<G4MagneticField*, G4double, G4MagIntegratorStepper*>())
