@@ -23,7 +23,6 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: pyG4VProcess.cc 76884 2013-11-18 12:54:03Z gcosmo $
 // ====================================================================
 //   pyG4VProcess.cc
 //
@@ -67,7 +66,6 @@ void export_G4VProcess()
     .def("GetProcessName",       &G4VProcess::GetProcessName,
          return_value_policy<return_by_value>())
     .def("GetProcessType",       &G4VProcess::GetProcessType)
-    .def("GetProcessSubType",    &G4VProcess::GetProcessSubType)
     .def("DumpInfo",             &G4VProcess::DumpInfo)
     .def("SetVerboseLevel",      &G4VProcess::SetVerboseLevel)
     .def("GetVerboseLevel",      &G4VProcess::GetVerboseLevel)
