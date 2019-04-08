@@ -37,6 +37,7 @@ using namespace boost::python;
 // ====================================================================
 void export_G4Material();
 void export_G4MaterialTable();
+void export_G4MaterialPropertiesTable();
 void export_G4Element();
 void export_G4ElementTable();
 //void export_G4ElementVector();
@@ -48,6 +49,7 @@ BOOST_PYTHON_MODULE(G4materials)
 {
   export_G4Material();
   export_G4MaterialTable();
+  export_G4MaterialPropertiesTable();
   export_G4Element();
   export_G4ElementTable();
   //export_G4ElementVector();

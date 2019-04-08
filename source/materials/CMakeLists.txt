@@ -12,6 +12,7 @@ add_library(
   pyG4Material.cc
   pyG4MaterialTable.cc
   pyG4NistManager.cc
+  pyG4MaterialPropertiesTable.cc
   pymodG4materials.cc
 )
 
