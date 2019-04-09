@@ -13,7 +13,6 @@ add_library(
   pyG4ProductionCutsTable.cc
   pyG4VCrossSectionHandler.cc
   pyG4VProcess.cc
-  pyG4LossTableManager.cc
   pymodG4processes.cc
 )
 
